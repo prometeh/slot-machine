@@ -19,7 +19,9 @@
     Example on how to get started with sprites can be found in the run() method.
 
     If you have any questions, feel free to contact us at devlead@jaderabbitstudio.com
-*/
+ */
+
+import * as PIXI from "pixi.js";
 
 const app = new PIXI.Application({
   width: 800,
