@@ -5,7 +5,6 @@ export const SPRITE_HEIGHT = 225;
 
 const Reel = (x, y) => {
   const reelContainer = new PIXI.Container();
-
   const sprites = [
     "Low1.png",
     "Low2.png",
@@ -24,15 +23,21 @@ const Reel = (x, y) => {
 
   let initYpos = -(SPRITE_HEIGHT * 4);
 
+  reelContainer.data = {
+    isSpinning: false,
+    duration: 0,
+    offset: 0,
+    winning: false,
+  };
+
   for (const spriteName of sprites) {
     const sprite = new PIXI.Sprite(PIXI.Texture.from(spriteName));
     sprite.name = spriteName;
+
     sprite.anchor.set(0.5);
     sprite.x = SPRITE_WIDTH / 2;
     sprite.y = initYpos;
     initYpos += sprite.height;
-
-    sprite.scale.set(0.9);
 
     reelContainer.addChild(sprite);
   }

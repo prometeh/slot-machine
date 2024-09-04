@@ -13,7 +13,7 @@ importers:
         version: 7.4.0
     devDependencies:
       vite:
-        specifier: ^5.4.1
+        specifier: ^5.4.2
         version: 5.4.2
 
 packages:
@@ -514,14 +514,14 @@ packages:
     resolution: {integrity: sha512-IRZSRuzJiynemAXPYtPe5BoI/RESNYR7TYm50MC5Mqbd3Jmw5y790sErYw3V6SryFJD64b74qQQs9wn5Bg/k3g==}
     engines: {node: '>= 0.4'}
 
-  picocolors@1.0.1:
-    resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
+  picocolors@1.1.0:
+    resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
 
   pixi.js@7.4.0:
     resolution: {integrity: sha512-c2q3NG06RcSzgcyNieuC/ogzdaBKRoZvBlAiPdL8ubhJyEVCoSA+zitjsCe/m3t5cVrrjPnwo81ps+fg908hBw==}
 
-  postcss@8.4.42:
-    resolution: {integrity: sha512-hywKUQB9Ra4dR1mGhldy5Aj1X3MWDSIA1cEi+Uy0CjheLvP6Ual5RlwMCh8i/X121yEDLDIKBsrCQ8ba3FDMfQ==}
+  postcss@8.4.44:
+    resolution: {integrity: sha512-Aweb9unOEpQ3ezu4Q00DPvvM2ZTUitJdNKeP/+uQgr1IBIqu574IaZoURId7BKtWMREwzKa9OgzPzezWGPWFQw==}
     engines: {node: ^10 || ^12 || >=14}
 
   punycode@1.4.1:
@@ -983,7 +983,7 @@ snapshots:
 
   object-inspect@1.13.2: {}
 
-  picocolors@1.0.1: {}
+  picocolors@1.1.0: {}
 
   pixi.js@7.4.0:
     dependencies:
@@ -1018,10 +1018,10 @@ snapshots:
       '@pixi/text-bitmap': 7.4.0(@pixi/assets@7.4.0(@pixi/core@7.4.0))(@pixi/core@7.4.0)(@pixi/display@7.4.0(@pixi/core@7.4.0))(@pixi/mesh@7.4.0(@pixi/core@7.4.0)(@pixi/display@7.4.0(@pixi/core@7.4.0)))(@pixi/text@7.4.0(@pixi/core@7.4.0)(@pixi/sprite@7.4.0(@pixi/core@7.4.0)(@pixi/display@7.4.0(@pixi/core@7.4.0))))
       '@pixi/text-html': 7.4.0(@pixi/core@7.4.0)(@pixi/display@7.4.0(@pixi/core@7.4.0))(@pixi/sprite@7.4.0(@pixi/core@7.4.0)(@pixi/display@7.4.0(@pixi/core@7.4.0)))(@pixi/text@7.4.0(@pixi/core@7.4.0)(@pixi/sprite@7.4.0(@pixi/core@7.4.0)(@pixi/display@7.4.0(@pixi/core@7.4.0))))
 
-  postcss@8.4.42:
+  postcss@8.4.44:
     dependencies:
       nanoid: 3.3.7
-      picocolors: 1.0.1
+      picocolors: 1.1.0
       source-map-js: 1.2.0
 
   punycode@1.4.1: {}
@@ -1078,7 +1078,7 @@ snapshots:
   vite@5.4.2:
     dependencies:
       esbuild: 0.21.5
-      postcss: 8.4.42
+      postcss: 8.4.44
       rollup: 4.21.2
     optionalDependencies:
       fsevents: 2.3.3

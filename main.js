@@ -22,6 +22,9 @@
  */
 
 import * as PIXI from "pixi.js";
+import ReelAnimation, { landgracefully } from "./animations/reel";
+import ThreeSlots from "./containers/threeSlots";
+import Button from "./containers/button";
 
 const app = new PIXI.Application({
   width: 800,
@@ -45,13 +48,76 @@ async function loadAssets() {
 }
 
 async function run() {
-  const sprite = new PIXI.Sprite(PIXI.Texture.from("High3.png"));
-  sprite.anchor.set(0.5);
-  sprite.x = app.screen.width / 2;
-  sprite.y = app.screen.height / 2;
-  app.stage.addChild(sprite);
+  let threeSlots = ThreeSlots();
+  let slotOne = threeSlots.children.at(0);
+  let slotTwo = threeSlots.children.at(1);
+  let slotThree = threeSlots.children.at(2);
+  let startSpin = false;
 
-  app.ticker.add(function (delta) {
-    sprite.rotation += 0.01 * delta;
+  threeSlots.scale.set(0.7);
+  threeSlots.position.set(threeSlots.width / 4, 50);
+
+  let button = Button(() => {
+    startSpin = true;
+
+    app.ticker.addOnce(() => {
+      for (var i = 0; i < 3; i++) {
+        let reelContainer = threeSlots.children.at(i);
+        reelContainer.data.winning = false;
+
+        let timer = setInterval(() => {
+          reelContainer.data.duration--;
+
+          if (reelContainer.data.duration < 0) {
+            clearInterval(timer);
+            reelContainer.data.offset = 0;
+            reelContainer.data.duration = 0;
+            reelContainer.data.isSpinning = false;
+            landgracefully(reelContainer);
+          }
+        }, 1000);
+      }
+    });
+  });
+
+  button.position.set(app.screen.width / 2 - 20, 450);
+
+  app.stage.addChild(threeSlots);
+
+  app.stage.addChild(button);
+
+  app.ticker.add(function () {
+    for (var i = 0; i < 3; i++) {
+      let container = threeSlots.children.at(i);
+
+      ReelAnimation(container, startSpin);
+    }
+    if (
+      !slotOne.data.isSpinning &&
+      !slotTwo.data.isSpinning &&
+      !slotThree.data.isSpinning
+    ) {
+      button.eventMode = "static"; // making the button works only when all the reels have stopped
+
+      if (
+        slotOne.children.at(5).name === slotTwo.children.at(5).name &&
+        slotOne.children.at(5).name === slotThree.children.at(5).name
+      ) {
+        for (var i = 0; i < 3; i++) {
+          let container = threeSlots.children.at(i);
+
+          container.data.winning = true;
+        }
+      } else {
+        for (var i = 0; i < 3; i++) {
+          let container = threeSlots.children.at(i);
+
+          container.data.winning = false;
+        }
+      }
+    } else {
+      button.eventMode = "none";
+    }
+    startSpin = false;
   });
 }
